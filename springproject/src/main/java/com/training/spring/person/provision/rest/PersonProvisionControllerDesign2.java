@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.training.spring.rest.Person;
+import com.training.spring.person.provision.rest.models.PersonRest;
 
 @RestController
 @RequestMapping("/api/v1/person/provision")
 public class PersonProvisionControllerDesign2 {
 
     @PutMapping("/activate")
-    public String activate(@RequestBody final Person personParam) {
+    public String activate(@RequestBody final PersonRest personParam) {
         return "OK";
     }
 
