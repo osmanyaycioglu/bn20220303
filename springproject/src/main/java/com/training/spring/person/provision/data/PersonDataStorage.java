@@ -3,6 +3,7 @@ package com.training.spring.person.provision.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.training.spring.person.provision.models.Person;
@@ -11,6 +12,7 @@ import com.training.spring.person.provision.persist.IPersonDao;
 @Service
 public class PersonDataStorage {
 
+    @Autowired
     private IPersonDao personDao;
 
     public void insert(final Person personParam) {
