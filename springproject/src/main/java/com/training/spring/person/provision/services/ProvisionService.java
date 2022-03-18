@@ -12,9 +12,8 @@ public class ProvisionService {
     @Autowired
     private PersonDataStorage dataStorage;
 
-    public String activate(final Person personParam) {
-        this.dataStorage.insert(personParam);
-        return "OK";
+    public Long activate(final Person personParam) {
+        return this.dataStorage.insert(personParam);
     }
 
 }

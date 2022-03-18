@@ -29,14 +29,14 @@ public class PersonProvisionController {
     @Operation(description = "Person will be activated and written to db",
                summary = "activate person",
                tags = "apigroup1")
-    public String activate(@Validated @RequestBody final PersonRest personParam) {
+    public Long activate(@Validated @RequestBody final PersonRest personParam) {
         if ((personParam.getName() == null)
             || personParam.getName()
                           .isEmpty()) {
             throw new IllegalArgumentException();
         }
-        this.ps.activate(IPersonMapper.mapper.toPerson(personParam));
-        return "OK";
+        System.out.println("---------------/api/v1/person/provision/activate : " + personParam);
+        return this.ps.activate(IPersonMapper.mapper.toPerson(personParam));
     }
 
     @GetMapping("/deactivate")

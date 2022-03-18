@@ -15,8 +15,9 @@ public class PersonDataStorage {
     @Autowired
     private IPersonDao personDao;
 
-    public void insert(final Person personParam) {
-        this.personDao.save(personParam);
+    public Long insert(final Person personParam) {
+        Person saveLoc = this.personDao.save(personParam);
+        return saveLoc.getPersonId();
     }
 
     public void delete(final Long perId) {
@@ -48,5 +49,10 @@ public class PersonDataStorage {
     public List<Person> getBySurname(final String name) {
         return this.personDao.findBySurname(name);
     }
+
+    public List<Person> getByPhone(final String phone) {
+        return this.personDao.findByPhone(phone);
+    }
+
 
 }

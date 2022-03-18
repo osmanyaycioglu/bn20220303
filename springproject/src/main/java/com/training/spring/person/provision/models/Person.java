@@ -14,6 +14,7 @@ public class Person {
     private String  surname;
     private Integer height;
     private Integer weight;
+    private String  phone;
 
     public String getName() {
         return this.name;
@@ -61,11 +62,19 @@ public class Person {
     }
 
     public Long getPersonId() {
-        return personId;
+        return this.personId;
     }
 
-    public void setPersonId(Long personIdParam) {
-        personId = personIdParam;
+    public void setPersonId(final Long personIdParam) {
+        this.personId = personIdParam;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public void setPhone(final String phoneParam) {
+        this.phone = phoneParam;
     }
 
 }

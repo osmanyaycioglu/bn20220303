@@ -13,6 +13,8 @@ public interface IPersonDao extends CrudRepository<Person, Long> {
 
     List<Person> findBySurname(String surname);
 
+    List<Person> findByPhone(String phone);
+
     List<Person> findByNameAndSurname(String name,
                                       String surname);
 
