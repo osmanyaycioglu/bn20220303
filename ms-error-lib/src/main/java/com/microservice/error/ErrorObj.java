@@ -1,4 +1,4 @@
-package com.training.spring.error;
+package com.microservice.error;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,10 @@ public class ErrorObj {
     private List<ErrorObj> subErrors;
     private String         message;
     private Integer        errorCode;
+    private String         boundedContext;
+    private String         domain;
+    private String         microservice;
+
 
     public static ErrorObj newInstance() {
         return new ErrorObj();
@@ -55,5 +59,31 @@ public class ErrorObj {
         return this;
     }
 
+    public String getBoundedContext() {
+        return this.boundedContext;
+    }
+
+    public ErrorObj setBoundedContext(final String boundedContextParam) {
+        this.boundedContext = boundedContextParam;
+        return this;
+    }
+
+    public String getDomain() {
+        return this.domain;
+    }
+
+    public ErrorObj setDomain(final String domainParam) {
+        this.domain = domainParam;
+        return this;
+    }
+
+    public String getMicroservice() {
+        return this.microservice;
+    }
+
+    public ErrorObj setMicroservice(final String microserviceParam) {
+        this.microservice = microserviceParam;
+        return this;
+    }
 
 }

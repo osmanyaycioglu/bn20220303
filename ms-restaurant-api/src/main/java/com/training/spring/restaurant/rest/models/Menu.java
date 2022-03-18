@@ -2,9 +2,12 @@ package com.training.spring.restaurant.rest.models;
 
 import java.util.List;
 
+import javax.validation.constraints.Negative;
+
 
 public class Menu {
 
+    @Negative
     private Long       personId;
     private List<Meal> meals;
 

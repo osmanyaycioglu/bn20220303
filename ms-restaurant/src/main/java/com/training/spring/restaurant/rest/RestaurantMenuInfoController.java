@@ -3,6 +3,7 @@ package com.training.spring.restaurant.rest;
 import java.security.SecureRandom;
 import java.util.Random;
 
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +14,7 @@ import com.training.spring.restaurant.rest.models.MenuInfoPrice;
 public class RestaurantMenuInfoController implements IRestaurantMenuInfoController {
 
     @Override
-    public MenuInfoPrice getMenuPrice(@RequestBody final Menu menu) {
+    public MenuInfoPrice getMenuPrice(@Validated @RequestBody final Menu menu) {
         System.out.println("------MenuPrice : " + menu);
         MenuInfoPrice infoPriceLoc = new MenuInfoPrice();
         Random randomLoc = new SecureRandom();
