@@ -20,6 +20,7 @@ public class OrderManagementService {
         if (personId == null) {
             throw new IllegalStateException("Can not create new person");
         }
+
         return "Person : " + personId + " created and activated";
     }
 

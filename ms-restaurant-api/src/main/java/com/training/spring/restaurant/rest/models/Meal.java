@@ -1,4 +1,4 @@
-package com.training.spring.order.rest.models;
+package com.training.spring.restaurant.rest.models;
 
 
 public class Meal {

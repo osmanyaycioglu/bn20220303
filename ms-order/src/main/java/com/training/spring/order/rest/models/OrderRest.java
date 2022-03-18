@@ -2,6 +2,8 @@ package com.training.spring.order.rest.models;
 
 import java.util.List;
 
+import com.training.spring.restaurant.rest.models.Meal;
+
 public class OrderRest {
 
     private String     phone;
