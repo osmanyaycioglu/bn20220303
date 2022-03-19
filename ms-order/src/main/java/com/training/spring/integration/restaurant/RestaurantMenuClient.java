@@ -8,6 +8,9 @@ import com.training.spring.order.rest.models.OrderRest;
 import com.training.spring.restaurant.rest.models.Menu;
 import com.training.spring.restaurant.rest.models.MenuInfoPrice;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+
 @Service
 public class RestaurantMenuClient {
 
@@ -17,14 +20,14 @@ public class RestaurantMenuClient {
     @Autowired
     private RestTemplate    restTemplate;
 
+    @Retry(name = "abcretry")
+    @CircuitBreaker(name = "mycb")
     public Long getPrice(final OrderRest orderRestParam,
                          final Long personId) {
         Menu menuLoc = new Menu();
         menuLoc.setPersonId(personId);
         menuLoc.setMeals(orderRestParam.getMeals());
-        MenuInfoPrice menuPriceLoc = this.restTemplate.postForObject("http://RESTAURANT/api/v1/restaurant/menu/price",
-                                                                     menuLoc,
-                                                                     MenuInfoPrice.class);
+        MenuInfoPrice menuPriceLoc = this.restaurantMenu.getMenuPrice(menuLoc);
         return menuPriceLoc.getPrice();
     }
 
@@ -33,7 +36,10 @@ public class RestaurantMenuClient {
         Menu menuLoc = new Menu();
         menuLoc.setPersonId(personId);
         menuLoc.setMeals(orderRestParam.getMeals());
-        MenuInfoPrice menuPriceLoc = this.restaurantMenu.getMenuPrice(menuLoc);
+        MenuInfoPrice menuPriceLoc = this.restTemplate.postForObject("http://RESTAURANT/api/v1/restaurant/menu/price",
+                                                                     menuLoc,
+                                                                     MenuInfoPrice.class);
+
         return menuPriceLoc.getPrice();
     }
 

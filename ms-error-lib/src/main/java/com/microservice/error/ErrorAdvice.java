@@ -36,6 +36,16 @@ public class ErrorAdvice {
                    .setMessage(exp.getMessage());
     }
 
+    @ExceptionHandler(RestException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ErrorObj handleException(final RestException exp) {
+        ErrorObj rootLoc = this.createBaseErrorObject()
+                               .setErrorCode(3007)
+                               .setMessage("Error while calling another microservice");
+        rootLoc.addSubError(exp.getErrorObj());
+        return rootLoc;
+    }
+
     @ExceptionHandler(HttpStatusCodeException.class)
     @ResponseStatus(value = HttpStatus.BAD_GATEWAY)
     public ErrorObj handleException(final HttpStatusCodeException exp) {
