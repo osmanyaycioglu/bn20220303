@@ -35,7 +35,6 @@ resilience4j:
         max-attempts: 2
         wait-duration: '0s'
         retry-exception-predicate: com.training.spring.resilience4j.RetryPredicate
-        result-predicate: com.training.spring.resilience4j.ResultRetryPredicate
   circuitbreaker:
     metrics:
       enabled: true

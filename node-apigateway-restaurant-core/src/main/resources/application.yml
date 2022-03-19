@@ -1,0 +1,20 @@
+server:
+  port: ${my.port:8080}
+spring:
+  application:
+    name: restaurant-core-apigw
+  config:
+    import: configserver:http://127.0.0.1:8888
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: restaurant-route
+        uri: lb://RESTAURANT
+        predicates:
+        - Path=/api/v1/restaurant/**
